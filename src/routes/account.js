@@ -140,6 +140,11 @@ async function handleGameProfile(req, res, body, uuid, name) {
     skin = JSON.stringify(userDataObj.skin);
   }
 
+  // Set no-cache headers to prevent caching of user profile/skin data
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+
   sendJson(res, 200, {
     uuid, username: name,
     entitlements: ["game.base"],

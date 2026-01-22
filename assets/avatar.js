@@ -147,7 +147,8 @@ class HytaleAvatarViewer {
   async loadAvatar(uuid) {
     try {
       this.onLoadProgress('Fetching skin data...');
-      const response = await fetch(`/avatar/${uuid}/model`);
+      // Add cache-busting timestamp to prevent browser caching
+      const response = await fetch(`/avatar/${uuid}/model?_=${Date.now()}`);
       if (!response.ok) throw new Error('Failed to load avatar data');
       this.modelData = await response.json();
       if (this.modelData.error) throw new Error(this.modelData.error);

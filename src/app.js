@@ -180,6 +180,13 @@ async function routeRequest(req, res, url, urlPath, body, uuid, name, tokenScope
     return;
   }
 
+  // Account-data skin endpoint (used by customizer) - extracts UUID from path
+  if (urlPath.startsWith('/account-data/skin/')) {
+    const skinUuid = urlPath.replace('/account-data/skin/', '');
+    await routes.account.handleSkin(req, res, body, skinUuid, name, routes.avatar.invalidateHeadCache);
+    return;
+  }
+
   if (urlPath === '/my-account/cosmetics' || urlPath.includes('/my-account/cosmetics')) {
     routes.account.handleCosmetics(req, res, body, uuid, name);
     return;

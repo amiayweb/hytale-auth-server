@@ -36,7 +36,7 @@ This server handles authentication requests from both the game client (via the F
 
 ### Quick Test (No Setup Required)
 
-1. **Download the pre-built launcher**: [Hytale-F2P v2.0.4-auth-sanasol.ws](https://github.com/sanasol/Hytale-F2P/releases/tag/v2.0.4-auth-sanasol.ws)
+1. **Download the pre-built launcher**: [Hytale F2P Launcher v2.0.2b](https://github.com/amiayweb/Hytale-F2P/releases/tag/v2.0.2b)
 2. **Connect to the public game server**: `ht.vboro.de:5720`
 
 That's it! No auth server or game server setup needed for testing.
@@ -48,7 +48,7 @@ That's it! No auth server or game server setup needed for testing.
 
 ### Build from Source
 
-Alternatively, use the [Hytale-F2P launcher source](https://github.com/sanasol/Hytale-F2P/tree/patched-auth-server) and [hytale-server-docker](https://github.com/sanasol/hytale-server-docker) with default settings - they're pre-configured to use `sanasol.ws`.
+Alternatively, use the [Hytale F2P Launcher source](https://github.com/amiayweb/Hytale-F2P) and [hytale-server-docker](https://github.com/sanasol/hytale-server-docker) with default settings - they're pre-configured to use `sanasol.ws` with dual auth support (both official and F2P players can play together).
 
 > **Note**: The public server is for testing purposes. For production use or privacy, set up your own server using this repository.
 
@@ -59,7 +59,7 @@ This is part of a complete Hytale F2P setup:
 | Project | Description |
 |---------|-------------|
 | [hytale-auth-server](https://github.com/sanasol/hytale-auth-server) | Authentication server (this repo) |
-| [Hytale-F2P](https://github.com/sanasol/Hytale-F2P/tree/patched-auth-server) | Game launcher with domain patching |
+| [Hytale F2P Launcher](https://github.com/amiayweb/Hytale-F2P) | Game launcher with dual auth support |
 | [hytale-server-docker](https://github.com/sanasol/hytale-server-docker) | Dedicated server Docker image |
 
 ## Requirements (for running your own server)
@@ -341,11 +341,13 @@ This exposes the server on `http://localhost:3000`.
    docker compose up -d
    ```
 
-3. **Launch the game** ([Hytale-F2P](https://github.com/sanasol/Hytale-F2P/tree/patched-auth-server)):
+3. **Launch the game** ([Hytale F2P Launcher](https://github.com/amiayweb/Hytale-F2P)):
+   - Download from [releases](https://github.com/amiayweb/Hytale-F2P/releases/tag/v2.0.2b)
+   - Or build from source:
    ```bash
+   git clone https://github.com/amiayweb/Hytale-F2P.git
    cd Hytale-F2P
    npm install
-   # Set HYTALE_AUTH_DOMAIN environment variable or edit config
    npm start
    ```
 

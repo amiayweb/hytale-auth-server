@@ -184,6 +184,11 @@ async function handleAvatarModel(req, res, uuid) {
     skinTone = userSkin.skinTone;
   }
 
+  // Set no-cache headers to prevent browser caching of user skin data
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+
   sendJson(res, 200, {
     uuid,
     skinTone,
